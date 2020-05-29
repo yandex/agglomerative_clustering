@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(agglomerative_clustering)
+add_subdirectory(lib)
+add_executable(agglomerative_clustering args.cpp main.cpp)
+target_link_libraries(agglomerative_clustering agglomerative_clustering_lib)
