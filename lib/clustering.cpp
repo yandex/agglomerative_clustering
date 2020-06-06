@@ -116,10 +116,6 @@ namespace NAgglomerativePrivate {
                 }
 
                 const float similarity = neighbourWithSimilarity.second;
-                if (similarity < ClusteringParameters.SimilarityThreshold) {
-                    continue;
-                }
-
                 const TElement& neighbour = elements.GetElement(neighbourIdx);
 
                 TSubsetStats relationStats;

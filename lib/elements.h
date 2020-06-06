@@ -5,6 +5,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "clustering_parameters.h"
+
 struct TElement {
     std::unordered_map<size_t, float> Similarities;
     double SumSimilarities = 1.;
@@ -33,7 +35,7 @@ public:
     const TElement& GetElement(const size_t index) const;
 
     size_t Size() const;
-    void Load(std::istream& in);
+    void Load(std::istream& in, const TClusteringParameters& clusteringParameters);
 private:
     size_t GetElementIndex(const std::string& id);
 };

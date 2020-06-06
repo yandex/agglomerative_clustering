@@ -23,7 +23,7 @@ int main(int argc, const char** argv) {
     timer.Reset("loading documents");
     TElements elements;
     std::ios_base::sync_with_stdio(false);
-    elements.Load(std::cin);
+    elements.Load(std::cin, clusteringParameters);
 
     timer.ReportAndReset("clustering documents");
     const TClusters clusters = DoCluster(elements, clusteringParameters);

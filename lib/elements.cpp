@@ -18,13 +18,16 @@ size_t TElements::Size() const {
     return Elements.size();
 }
 
-void TElements::Load(std::istream& in) {
+void TElements::Load(std::istream& in, const TClusteringParameters& clusteringParameters) {
     std::string first, second;
     float similarity;
 
     size_t loadedPairs = 0;
     while (in >> first >> second >> similarity) {
         similarity = std::min(1.f, std::max(0.f, similarity));
+        if (similarity < clusteringParameters.SimilarityThreshold) {
+            continue;
+        }
 
         const size_t firstIndex = GetElementIndex(first);
         const size_t secondIndex = GetElementIndex(second);
