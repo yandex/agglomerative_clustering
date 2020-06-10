@@ -53,7 +53,7 @@ for i in range(len(points)):
 
         similarities.append([i, j, similarity])
 
-    print >> sys.stderr, i, len(points)
+    print(i, len(points), file=sys.stderr)
 
 random.shuffle(similarities)
 similarities = similarities[: len(similarities) / 3]
@@ -63,10 +63,10 @@ pointsOut = open("2d_points.tsv", "w")
 simOut = open("2d_similarities.tsv", "w")
 
 for similarityInfo in similarities:
-    print >> simOut, "\t".join(map(str, similarityInfo))
+    print("\t".join(map(str, similarityInfo)), file=simOut)
 for i in range(len(points)):
-    print >> markupOut, "\t".join(map(str, [pointClusters[i], i]))
-print >> pointsOut, "\n".join(map(lambda x : "\t".join(map(str, x)), points))
+    print("\t".join(map(str, [pointClusters[i], i])), file=markupOut)
+print("\n".join(["\t".join(map(str, x)) for x in points]), file=pointsOut)
 
 markupOut.close()
 pointsOut.close()
